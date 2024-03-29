@@ -1,0 +1,35 @@
+\ProvidesPackage{preamble-tpt}
+
+
+\usepackage[a4paper, margin=0.2in]{geometry}
+\usepackage{ninecolors}
+\usepackage{tabularray} %needs package ninecolors.sty
+\usepackage{booktabs}
+\usepackage[l3]{csvsimple} % or "\usepackage{csvsimple-l3}"
+\usepackage{graphicx}
+
+\def\event{Assembly}
+\def\rundate{16/16/1616}
+\def\revision{0.1.0}
+
+\makeatletter
+\renewcommand\maketitle{  
+\newgeometry{margin=2.5in}
+\begin{titlepage}
+  \vspace*{\fill}
+  \begin{centering}
+    \centering
+    \def\svgwidth{6cm}
+    \input{tptlogo.pdf_tex}\\
+    \Huge \textbf{Cue Sheet} \\
+    \LARGE \textbf{\@title} \\
+    \vspace{5cm}
+    \Huge \textbf{\event}\\
+    \large Run Date: \rundate\\
+    \large Revision: \revision
+
+  \end{centering}
+  \vspace*{\fill}
+\end{titlepage}
+\restoregeometry
+}

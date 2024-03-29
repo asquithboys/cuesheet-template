@@ -1,0 +1,32 @@
+
+\documentclass[a4paper]{article}
+
+\usepackage{preamble-tpt}
+
+\begin{document}
+
+\title{Cameras}
+\maketitle
+% required by tabularray
+\NewTableCommand\toprule{\hline[0.08em]}
+\NewTableCommand\midrule{\hline[0.05em]}
+\NewTableCommand\bottomrule{\hline[0.08em]}
+\csvreader[
+    long tabularray={
+      colspec={|X[1.5,c,h]|X[15,l,h]|X[15,l,h]|X[30,l,h]|},
+    rows={5em},
+    row{odd}={gray9},
+    row{1}={1em, bg=azure3, fg=white},
+    rowhead=1,
+%      hlines
+  },
+  table head={\hline\textbf{\#} & \textbf{Description} & \textbf{Scene} & \textbf{C. Description}\\\hline},
+  late after line=\\\midrule,
+  late after last line=\\\bottomrule,
+  head to column names,
+  separator=tab,
+]{cue.tsv}{}{%
+  \GeneralNumber & \GeneralDescription & \GeneralScene & \CameraDescription
+}
+
+\end{document}
